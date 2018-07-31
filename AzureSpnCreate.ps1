@@ -4,7 +4,7 @@ param
     [string] $subscriptionName,
 
     [Parameter(Mandatory=$true, HelpMessage="Provide a password for SPN application that you would create")]
-    [string] $password,
+    [System.Security.SecureString] $password,
 
     [Parameter(Mandatory=$false, HelpMessage="Provide a SPN role assignment")]
     [string] $spnRole = "owner",
