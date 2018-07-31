@@ -35,9 +35,9 @@ Import-Module -Name AzureRM.Profile
 Write-Output "Provide your credentials to access Azure subscription $subscriptionName" -Verbose
 Login-AzureRmAccount -SubscriptionName $subscriptionName -EnvironmentName $environmentName
 $azureSubscription = Get-AzureRmSubscription -SubscriptionName $subscriptionName
-$connectionName = $azureSubscription.SubscriptionName
+$connectionName = $azureSubscription.Name
 $tenantId = $azureSubscription.TenantId
-$id = $azureSubscription.SubscriptionId
+$id = $azureSubscription.Id
 
 
 #Create a new AD Application
@@ -50,7 +50,7 @@ Write-Output "Azure AAD Application creation completed successfully (Application
 #Create new SPN
 Write-Output "Creating a new SPN" -Verbose
 $spn = New-AzureRmADServicePrincipal -ApplicationId $appId
-$spnName = $spn.ServicePrincipalName
+$spnName = $spn.DisplayName
 Write-Output "SPN creation completed successfully (SPN Name: $spnName)" -Verbose
 
 
